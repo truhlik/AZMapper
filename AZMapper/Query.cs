@@ -437,7 +437,7 @@ namespace AZMapper
             for (int i = 0; i < tableMap.Fields.Count; i++)
             {
                 if (!tableMap.Fields[i].AutoIncrement)
-                    AddInputParameter(tableMap.Fields[i].FieldTable, getters[tableMap.Fields[i].FieldTable].Getter(obj), (int)tableMap.Fields[i].DbType);
+                    AddInputParameter(tableMap.Fields[i].Name, getters[tableMap.Fields[i].Name].Getter(obj), (int)tableMap.Fields[i].DbType);
             }
 
             this.ExecuteNonQuery();
@@ -461,7 +461,7 @@ namespace AZMapper
                 for (int i = 0; i < tableMap.Fields.Count; i++)
                 {
                     if (!tableMap.Fields[i].AutoIncrement)
-                        AddInputParameter(tableMap.Fields[i].FieldTable, getters[tableMap.Fields[i].FieldTable].Getter(item), (int)tableMap.Fields[i].DbType);
+                        AddInputParameter(tableMap.Fields[i].Name, getters[tableMap.Fields[i].Name].Getter(item), (int)tableMap.Fields[i].DbType);
                 }
 
                 this.ExecuteNonQuery();
@@ -495,9 +495,9 @@ namespace AZMapper
 
             for (int i = 0; i < tableMap.Fields.Count; i++)
             {
-                if (fields == null || tableMap.Fields[i].IsPrimaryKey || (fields != null && fields.IsInArray(tableMap.Fields[i].FieldTable, false)))
+                if (fields == null || tableMap.Fields[i].IsPrimaryKey || (fields != null && fields.IsInArray(tableMap.Fields[i].Name, false)))
                 {
-                    AddInputParameter(tableMap.Fields[i].FieldTable, getters[tableMap.Fields[i].FieldTable].Getter(obj), (int)tableMap.Fields[i].DbType);
+                    AddInputParameter(tableMap.Fields[i].Name, getters[tableMap.Fields[i].Name].Getter(obj), (int)tableMap.Fields[i].DbType);
                 }
             }
 

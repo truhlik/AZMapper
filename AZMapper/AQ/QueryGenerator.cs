@@ -25,8 +25,8 @@ namespace AZMapper.AQ
                 {
                     if (!tableMapping.Fields[i].AutoIncrement)
                     {
-                        part1.Add(tableMapping.Fields[i].FieldTable);
-                        part2.Add(TableMapperConfiguration.BindingValueMark + tableMapping.Fields[i].FieldTable);
+                        part1.Add(tableMapping.Fields[i].Name);
+                        part2.Add(TableMapperConfiguration.BindingValueMark + tableMapping.Fields[i].Name);
                     }
                 }
 
@@ -43,7 +43,7 @@ namespace AZMapper.AQ
 
                 for (int i = 0; i < tableMapping.Fields.Count; i++)
                 {
-                    string part = string.Format("{0}={1}{2}", tableMapping.Fields[i].FieldTable, TableMapperConfiguration.BindingValueMark, tableMapping.Fields[i].FieldTable);
+                    string part = string.Format("{0}={1}{2}", tableMapping.Fields[i].Name, TableMapperConfiguration.BindingValueMark, tableMapping.Fields[i].Name);
 
                     if (tableMapping.Fields[i].IsPrimaryKey)
                     {
@@ -53,7 +53,7 @@ namespace AZMapper.AQ
                     {
                         if (fields != null && fields.Length > 0)
                         {
-                            if (fields.IsInArray(tableMapping.Fields[i].FieldTable, false))
+                            if (fields.IsInArray(tableMapping.Fields[i].Name, false))
                             {
                                 q.Add(part);
                             }
@@ -66,7 +66,7 @@ namespace AZMapper.AQ
                 }
 
                 if (primaryKey.Count < 1)
-                    throw new MapperException(string.Format("Table '{0}' has not defined a primary key"));
+                    throw new MapperException(string.Format("Table '{0}' does not have a primary key"));
 
                 return string.Format("UPDATE {0} SET {1} WHERE {2}", tableMapping.Name, string.Join(",", q), string.Join(",", primaryKey));
             }, fields);

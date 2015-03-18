@@ -39,7 +39,7 @@ namespace AZMapper.AQ
             tableFieldName = tableFieldName.Trim().ToLower();
             for (int i = 0; i < Fields.Count; i++)
             {
-                if (Fields[i].FieldTable.ToLower().Equals(tableFieldName))
+                if (Fields[i].Name.ToLower().Equals(tableFieldName))
                 {
                     var item = Fields[i];
                     item.IsPrimaryKey = true;

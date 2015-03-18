@@ -5,14 +5,14 @@ namespace AZMapper.AQ
 {
     public sealed class Field
     {
-        public string FieldTable { get; private set; }
+        public string Name { get; private set; }
         public bool IsPrimaryKey { get; set; }
         public bool AutoIncrement { get; set; }
         public DbType DbType { get; set; }
 
-        public Field(string fieldTable, bool isPrimaryKey, bool autoincrement, DbType type)
+        public Field(string name, bool isPrimaryKey, bool autoincrement, DbType type)
         {
-            FieldTable = fieldTable;
+            Name = name;
             IsPrimaryKey = isPrimaryKey;
             AutoIncrement = autoincrement;
             this.DbType = type;

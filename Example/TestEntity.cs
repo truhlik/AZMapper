@@ -5,13 +5,13 @@ namespace Example
 {
     public class TestEntity
     {
-        [DbFieldName("id")]
+        [DbField("id")]
         public int Id { get; set; }
 
-        [DbFieldName("name")]
+        [DbField("name")]
         public string Name { get; set; }
         
-        [DbFieldName("dateofbirth")]
+        [DbField("dateofbirth")]
         public DateTime DateOfBirth { get; set; }
         
         public byte[] Xml { get; set; }

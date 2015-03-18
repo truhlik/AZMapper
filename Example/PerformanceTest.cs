@@ -8,7 +8,7 @@ namespace Example
 {
     public class PerformanceTest
     {
-        private const int NUMBER = 50000;
+        private const int NUMBER = 100000;
         private readonly List<TestEntity> _source;
 
         public PerformanceTest()

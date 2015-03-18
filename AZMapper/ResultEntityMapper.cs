@@ -70,12 +70,11 @@ namespace AZMapper
             var attrs = propertyInfo.GetCustomAttributes(false);
             if (attrs.Length > 0)
             {
-                var attrType = typeof(DbFieldName);
                 for (int i = 0; i < attrs.Length; i++)
                 {
-                    if (attrs[i].GetType() == attrType)
+                    var attr = attrs[i] as DbField;
+                    if (attr != null)
                     {
-                        var attr = (DbFieldName)attrs[i];
                         if (attr.ExcludeFromMapping)
                         {
                             return string.Empty;

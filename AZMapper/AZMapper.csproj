@@ -47,7 +47,7 @@
     <Compile Include="AQ\GetterInfo.cs" />
     <Compile Include="AQ\IDbTypeResolver.cs" />
     <Compile Include="DataContext.cs" />
-    <Compile Include="DbFieldName.cs" />
+    <Compile Include="DbField.cs" />
     <Compile Include="MapperExtensionItem.cs" />
     <Compile Include="Extensions\PropertyExtension.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />

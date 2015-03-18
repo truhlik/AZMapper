@@ -36,19 +36,18 @@ namespace AZMapper.AQ
         {
             var properties = target.GetProperties();
             var getterList = new Dictionary<string, GetterInfo>(properties.Length);
-            DbFieldName attr = null;
+            DbField attr = null;
 
             for (int i = 0; i < properties.Length; i++)
             {
                 attr = null;
                 var attrs = properties[i].GetCustomAttributes(false);
+
                 for (int j = 0; j < attrs.Length; j++)
                 {
-                    if (attrs[j] is DbFieldName)
-                    {
-                        attr = (DbFieldName)attrs[j];
+                    attr = attrs[j] as DbField;
+                    if (attr != null)
                         break;
-                    }
                 }
 
                 if (attr != null && attr.ExcludeFromMapping)

@@ -17,7 +17,6 @@ namespace AZMapper
         private IConnectionManager _connManager;
         private bool _autonomous;
         private bool _isDisposed;
-        private List<Query> _queriesInTransaction;
 
         #region Properties
 
@@ -62,7 +61,6 @@ namespace AZMapper
             _isDisposed = false;
             _parent = null;
             _autonomous = autonomous;
-            _queriesInTransaction = new List<Query>();
         }
 
         protected DataContext(IConnectionManager connManager, IDataContext parent, bool autonomous = true)
@@ -112,8 +110,6 @@ namespace AZMapper
 
             if (_transactionStartedEventHandler != null)
                 _transactionStartedEventHandler(this, EventArgs.Empty);
-
-            _queriesInTransaction.ForEach(q => q.Transaction = this.Transaction);
         }
 
         public void CommitTransaction()

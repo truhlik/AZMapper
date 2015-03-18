@@ -22,7 +22,7 @@ namespace AZMapper.AQ
                 throw new ArgumentNullException("table");
 
             if (_tables.ContainsKey(type))
-                throw new MapperException(string.Format("Configuration for {0} already exists.", type.FullName));
+                throw new MapperException(string.Format("Configuration for '{0}' already exists.", type.FullName));
 
             _tables.Add(type, table);
         }
