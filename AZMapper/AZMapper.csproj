@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2439B79F-7CC3-4BD3-B010-CB0E803F5B06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AZMapper</RootNamespace>
+    <AssemblyName>AZMapper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AQ\DbTypeResolver.cs" />
+    <Compile Include="AQ\GetterInfo.cs" />
+    <Compile Include="AQ\IDbTypeResolver.cs" />
+    <Compile Include="DataContext.cs" />
+    <Compile Include="DbFieldName.cs" />
+    <Compile Include="MapperExtensionItem.cs" />
+    <Compile Include="Extensions\PropertyExtension.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\DataReaderExtensions.cs" />
+    <Compile Include="FieldMapper.cs" />
+    <Compile Include="IConnectionFactory.cs" />
+    <Compile Include="IConnectionManager.cs" />
+    <Compile Include="IDataContext.cs" />
+    <Compile Include="IMapable.cs" />
+    <Compile Include="MapperException.cs" />
+    <Compile Include="AQ\EntityMonitor.cs" />
+    <Compile Include="AQ\Field.cs" />
+    <Compile Include="AQ\TableMapperConfiguration.cs" />
+    <Compile Include="AQ\MonitoredEntity.cs" />
+    <Compile Include="AQ\ObjectGetterStorage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Query.cs" />
+    <Compile Include="AQ\QueryGenerator.cs" />
+    <Compile Include="AQ\Table.cs" />
+    <Compile Include="QueryGeneric.cs" />
+    <Compile Include="ResultEntityMapper.cs" />
+    <Compile Include="DefaultConnectionFactory.cs" />
+    <Compile Include="ConnectionManager.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
