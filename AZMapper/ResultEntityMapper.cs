@@ -9,12 +9,16 @@ namespace AZMapper
 {
     public sealed partial class ResultEntityMapper<T> where T : class, new()
     {
-        private static Dictionary<int, List<FieldInfoMapper>> _mappers;
+        private Dictionary<int, List<FieldInfoMapper>> _mappers;
         private static Dictionary<string, Action<T, IDataReader, int>> _properties;
+
+        public ResultEntityMapper()
+        {
+            _mappers = new Dictionary<int, List<FieldInfoMapper>>();
+        }
 
         static ResultEntityMapper()
         {
-            _mappers = new Dictionary<int, List<FieldInfoMapper>>();
             CreateProperties();
         }
 
