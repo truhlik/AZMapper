@@ -110,63 +110,63 @@ namespace AZMapper
             if (type == typeof(string))
             {
                 Action<T, string> setter = propertyInfo.InitializeSet<T, string>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetString(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableStringExt(index)); });
             }
             else if (type == typeof(int))
             {
                 Action<T, int> setter = propertyInfo.InitializeSet<T, int>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetInt32(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetInt32Ext(index)); });
             }
 
             else if (type == typeof(int?))
             {
                 Action<T, int?> setter = propertyInfo.InitializeSet<T, int?>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableInt(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableIntExt(index)); });
             }
             else if (type == typeof(long))
             {
                 Action<T, long> setter = propertyInfo.InitializeSet<T, long>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetLong(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetLongExt(index)); });
             }
             else if (type == typeof(long?))
             {
                 Action<T, long?> setter = propertyInfo.InitializeSet<T, long?>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableLong(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableLongExt(index)); });
             }
             else if (type == typeof(double))
             {
                 Action<T, double> setter = propertyInfo.InitializeSet<T, double>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetDouble(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetDoubleExt(index)); });
             }
             else if (type == typeof(double?))
             {
                 Action<T, double?> setter = propertyInfo.InitializeSet<T, double?>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableDouble(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableDoubleExt(index)); });
             }
             else if (type == typeof(DateTime))
             {
                 Action<T, DateTime> setter = propertyInfo.InitializeSet<T, DateTime>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetDateTime(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetDateTimeExt(index)); });
             }
             else if (type == typeof(DateTime?))
             {
                 Action<T, DateTime?> setter = propertyInfo.InitializeSet<T, DateTime?>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableDateTime(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableDateTimeExt(index)); });
             }
             else if (type == typeof(Decimal))
             {
                 Action<T, Decimal> setter = propertyInfo.InitializeSet<T, Decimal>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetDecimal(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetDecimalExt(index)); });
             }
             else if (type == typeof(bool))
             {
                 Action<T, bool> setter = propertyInfo.InitializeSet<T, bool>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetBoolean(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetBooleanExt(index)); });
             }
             else if (type == typeof(bool?))
             {
                 Action<T, bool?> setter = propertyInfo.InitializeSet<T, bool?>();
-                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableBoolean(index)); });
+                _properties.Add(propertyName, (obj, reader, index) => { setter(obj, reader.GetNullableBooleanExt(index)); });
             }
         }
 

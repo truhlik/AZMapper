@@ -7,20 +7,15 @@ namespace AZMapper.Extensions
     {
         #region ConversionByName
 
-        public static int GetFieldIndex(this IDataReader r, string fieldName)
+        public static string GetNullableStringExt(this IDataReader r, string fieldName)
         {
-            return r.GetOrdinal(fieldName);
+            int i = r.GetOrdinal(fieldName);
+            return r.GetNullableStringExt(i);
         }
 
-        public static string GetNullableString(this IDataReader r, string fieldName)
+        public static string GetStringExt(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            return !r.IsDBNull(i) ? r.GetString(i) : null;
-        }
-
-        public static string GetString(this IDataReader r, string fieldName)
-        {
-            int i = GetFieldIndex(r, fieldName);
+            int i = r.GetOrdinal(fieldName);
 
             if (r.IsDBNull(i))
                 throw new MapperException(string.Format("'{0}' cannot be NULL", fieldName));
@@ -28,97 +23,81 @@ namespace AZMapper.Extensions
             return r.GetString(i);
         }
 
-        public static Decimal? GetNullableDecimal(this IDataReader r, string fieldName)
+        public static Decimal? GetNullableDecimalExt(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            return !r.IsDBNull(i) ? (decimal?)r.GetDecimal(i) : null;
+            int i = r.GetOrdinal(fieldName);
+            return r.GetNullableDecimalExt(i);
         }
 
-        public static Decimal GetDecimal(this IDataReader r, string fieldName)
+        public static Decimal GetDecimalExt(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            if (r.IsDBNull(i))
-                throw new MapperException(string.Format("Field '{0}' cannot be NULL", fieldName));
-
-            return r.GetDecimal(i);
+            int index = r.GetOrdinal(fieldName);
+            return r.GetDecimalExt(index);
         }
 
-        public static int GetInt32(this IDataReader r, string fieldName)
+        public static int GetInt32Ext(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            if (r.IsDBNull(i))
-                throw new MapperException(string.Format("Field '{0}' cannot be NULL", fieldName));
-
-            return r.GetInt32(i);
+            int index = r.GetOrdinal(fieldName);
+            return r.GetInt32Ext(index);
         }
 
-        public static int? GetNullableInt(this IDataReader r, string fieldName)
+        public static int? GetNullableIntExt(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            return !r.IsDBNull(i) ? (int?)r.GetInt32(i) : null;
+            int index = r.GetOrdinal(fieldName);
+            return r.GetNullableIntExt(index);
         }
 
-        public static long GetLong(this IDataReader r, string fieldName)
+        public static long GetLongExt(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            if (r.IsDBNull(i))
-                throw new MapperException(string.Format("Field '{0}' cannot be NULL", fieldName));
-
-            return r.GetInt64(i);
+            int index = r.GetOrdinal(fieldName);
+            return r.GetLongExt(index);
         }
 
-        public static long? GetNullableLong(this IDataReader r, string fieldName)
+        public static long? GetNullableLongExt(this IDataReader r, string fieldName)
         {
-            int i = GetFieldIndex(r, fieldName);
-            return !r.IsDBNull(i) ? (long?)r.GetInt64(i) : null;
+            int index = r.GetOrdinal(fieldName);
+            return r.GetNullableLongExt(index);
         }
 
-        public static bool GetBoolean(this IDataReader r, string fieldName)
+        public static bool GetBooleanExt(this IDataReader r, string fieldName)
         {
-            return (GetString(r, fieldName) == "1") ? true : false;
+            int index = r.GetOrdinal(fieldName);
+            return r.GetBooleanExt(index);
         }
 
-        public static bool? GetNullableBoolean(this IDataReader r, string fieldName)
+        public static bool? GetNullableBooleanExt(this IDataReader r, string fieldName)
         {
-            string strResult = GetNullableString(r, fieldName);
-
-            if (strResult == null)
-                return null;
-
-            return (strResult == "1") ? true : false;
+            int index = r.GetOrdinal(fieldName);
+            return r.GetNullableBooleanExt(index);
         }
 
-        public static DateTime? GetNullableDateTime(this IDataReader r, string fieldName)
+        public static DateTime? GetNullableDateTimeExt(this IDataReader r, string fieldName)
         {
-            int index = GetFieldIndex(r, fieldName);
-            return GetNullableDateTime(r, index);
+            int i = r.GetOrdinal(fieldName);
+            return GetNullableDateTimeExt(r, i);
         }
 
-        public static DateTime GetDateTime(this IDataReader r, string fieldName)
+        public static DateTime GetDateTimeExt(this IDataReader r, string fieldName)
         {
-            int index = GetFieldIndex(r, fieldName);
-
-            if (r.IsDBNull(index))
-                throw new MapperException(string.Format("Field '{0}' cannot be NULL", fieldName));
-
-            return r.GetDateTime(index);
+            int index = r.GetOrdinal(fieldName);
+            return r.GetDateTimeExt(index);
         }
 
         #endregion
 
         #region ConversionByIndex
 
-        public static string GetString(this IDataReader r, int index)
+        public static string GetNullableStringExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? r.GetString(index) : string.Empty;
         }
 
-        public static Decimal? GetNullableDecimal(this IDataReader r, int index)
+        public static Decimal? GetNullableDecimalExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? (decimal?)r.GetDecimal(index) : null;
         }
 
-        public static Decimal GetDecimal(this IDataReader r, int index)
+        public static Decimal GetDecimalExt(this IDataReader r, int index)
         {
             if (r.IsDBNull(index))
                 throw new MapperException(string.Format("Decimal with the column index '{0}' cannot be NULL", index));
@@ -126,7 +105,7 @@ namespace AZMapper.Extensions
             return r.GetDecimal(index);
         }
 
-        public static int GetInt32(this IDataReader r, int index)
+        public static int GetInt32Ext(this IDataReader r, int index)
         {
             if (r.IsDBNull(index))
                 throw new MapperException(string.Format("Int32 with the column index '{0}' cannot be NULL", index));
@@ -134,12 +113,12 @@ namespace AZMapper.Extensions
             return r.GetInt32(index);
         }
 
-        public static int? GetNullableInt(this IDataReader r, int index)
+        public static int? GetNullableIntExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? (int?)r.GetInt32(index) : null;
         }
 
-        public static long GetLong(this IDataReader r, int index)
+        public static long GetLongExt(this IDataReader r, int index)
         {
             if (r.IsDBNull(index))
                 throw new MapperException(string.Format("Long with the column index '{0}' cannot be NULL", index));
@@ -147,32 +126,32 @@ namespace AZMapper.Extensions
             return r.GetInt64(index);
         }
 
-        public static long? GetNullableLong(this IDataReader r, int index)
+        public static long? GetNullableLongExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? (long?)r.GetInt64(index) : null;
         }
 
-        public static bool GetBoolean(this IDataReader r, int index)
+        public static bool GetBooleanExt(this IDataReader r, int index)
         {
-            return (GetString(r, index).Equals("1")) ? true : false;
+            return r.GetNullableStringExt(index).Equals("1");
         }
 
-        public static bool? GetNullableBoolean(this IDataReader r, int index)
+        public static bool? GetNullableBooleanExt(this IDataReader r, int index)
         {
-            string strResult = GetString(r, index);
+            string strResult = r.GetNullableStringExt(index);
 
             if (string.IsNullOrEmpty(strResult))
                 return null;
 
-            return (strResult.Equals("1")) ? true : false;
+            return strResult.Equals("1");
         }
 
-        public static DateTime? GetNullableDateTime(this IDataReader r, int index)
+        public static DateTime? GetNullableDateTimeExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? (DateTime?)r.GetDateTime(index) : null;
         }
 
-        public static DateTime GetDateTime(this IDataReader r, int index)
+        public static DateTime GetDateTimeExt(this IDataReader r, int index)
         {
             if (r.IsDBNull(index))
                 throw new MapperException(string.Format("DateTime with the column index '{0}' cannot be NULL", index));
@@ -180,7 +159,7 @@ namespace AZMapper.Extensions
             return r.GetDateTime(index);
         }
 
-        public static double GetDouble(this IDataReader r, int index)
+        public static double GetDoubleExt(this IDataReader r, int index)
         {
             if (r.IsDBNull(index))
                 throw new MapperException(string.Format("Double with the column index '{0}' cannot be NULL", index));
@@ -188,12 +167,12 @@ namespace AZMapper.Extensions
             return r.GetDouble(index);
         }
 
-        public static double? GetNullableDouble(this IDataReader r, int index)
+        public static double? GetNullableDoubleExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? (double?)r.GetDouble(index) : null;
         }
 
-        public static object GetObject(this IDataReader r, int index)
+        public static object GetObjectExt(this IDataReader r, int index)
         {
             return !r.IsDBNull(index) ? r.GetValue(index) : null;
         }

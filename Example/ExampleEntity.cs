@@ -13,12 +13,12 @@ namespace Example
 
         public void Map(System.Data.IDataReader reader)
         {
-            this.Id = reader.GetInt32("id");
-            this.Name = reader.GetNullableString("name");
-            this.DateOfBirth = reader.GetDateTime("dateofbirth");
+            this.Id = reader.GetInt32Ext("id");
+            this.Name = reader.GetNullableStringExt("name");
+            this.DateOfBirth = reader.GetDateTimeExt("dateofbirth");
 
-            int index = reader.GetFieldIndex("Xml");
-            var val = reader.GetObject(index) as byte[];
+            int index = reader.GetOrdinal("Xml");
+            var val = reader.GetObjectExt(index) as byte[];
             this.Xml = (val != null) ? val : null;
         }
     }

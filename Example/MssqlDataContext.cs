@@ -14,7 +14,7 @@ namespace Example
             var mapper = new ResultEntityMapper<TestEntity>();
             mapper.AddExtension<byte[]>(e => e.Xml, (reader, index) =>
                 {
-                    return reader.GetObject(index) as byte[];
+                    return reader.GetObjectExt(index) as byte[];
                 });
         }
 
